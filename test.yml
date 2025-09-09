@@ -36,11 +36,12 @@
       ansible.builtin.debug:
         msg: "{{ ntp_out.stdout_lines }}"
 
-    - name: Check if systemd-timesyncd is running
-      ansible.builtin.shell: systemctl is-active systemd-timesyncd || true
-      register: timesyncd_status
+    - name: Show systemd-timesyncd servers
+      ansible.builtin.shell: timedatectl show-timesync --all | grep Server
+      register: ntp_servers
+      changed_when: false
 
-    - name: Show systemd-timesyncd status
+    - name: Debug NTP servers
       ansible.builtin.debug:
-        msg: "systemd-timesyncd status = {{ timesyncd_status.stdout }}"
+        msg: "{{ ntp_servers.stdout_lines }}"
 
