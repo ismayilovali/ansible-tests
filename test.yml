@@ -7,23 +7,31 @@
     - name: Whoami
       ansible.builtin.command: whoami
       register: whoami_out
-    - debug:
-        var: whoami_out.stdout
+
+    - name: Show whoami
+      ansible.builtin.debug:
+        msg: "User = {{ whoami_out.stdout }}"
 
     - name: Hostname
       ansible.builtin.command: hostname
       register: hostname_out
-    - debug:
-        var: hostname_out.stdout
+
+    - name: Show hostname
+      ansible.builtin.debug:
+        msg: "Hostname = {{ hostname_out.stdout }}"
 
     - name: Uptime
       ansible.builtin.command: uptime
       register: uptime_out
-    - debug:
-        var: uptime_out.stdout
+
+    - name: Show uptime
+      ansible.builtin.debug:
+        msg: "Uptime = {{ uptime_out.stdout }}"
 
     - name: NTP client status
       ansible.builtin.command: timedatectl status
       register: ntp_out
-    - debug:
-        var: ntp_out.stdout
+
+    - name: Show NTP status
+      ansible.builtin.debug:
+        msg: "{{ ntp_out.stdout_lines }}"
