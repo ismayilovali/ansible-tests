@@ -1,47 +1,10 @@
----
-- name: Collect basic info
+- name: Collect facts
   hosts: all
-  gather_facts: false
+  gather_facts: true
 
   tasks:
-    - name: Whoami
-      ansible.builtin.command: whoami
-      register: whoami_out
-
-    - name: Show whoami
-      ansible.builtin.debug:
-        msg: "User = {{ whoami_out.stdout }}"
-
-    - name: Hostname
-      ansible.builtin.command: hostname
-      register: hostname_out
-
-    - name: Show hostname
-      ansible.builtin.debug:
-        msg: "Hostname = {{ hostname_out.stdout }}"
-
-    - name: Uptime
-      ansible.builtin.command: uptime
-      register: uptime_out
-
-    - name: Show uptime
-      ansible.builtin.debug:
-        msg: "Uptime = {{ uptime_out.stdout }}"
-
-    - name: NTP client status
-      ansible.builtin.command: timedatectl status
-      register: ntp_out
-
-    - name: Show NTP status
-      ansible.builtin.debug:
-        msg: "{{ ntp_out.stdout_lines }}"
-
-    - name: Show systemd-timesyncd servers
-      ansible.builtin.shell: timedatectl show-timesync --all | grep Server
-      register: ntp_servers
-      changed_when: false
-
-    - name: Debug NTP servers
-      ansible.builtin.debug:
-        msg: "{{ ntp_servers.stdout_lines }}"
-
+    - debug:
+        msg:
+          - "OS = {{ ansible_distribution }} {{ ansible_distribution_version }}"
+          - "Kernel = {{ ansible_kernel }}"
+          - "SSH user = {{ ansible_user }}"
