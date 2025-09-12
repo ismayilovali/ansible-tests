@@ -1,0 +1,62 @@
+all:
+  children:
+    Emba-PROD:
+      children:
+        HO:
+          hosts:
+            awx-ho:
+              ansible_host: awx-ho.embawood.dm
+            gitlab:
+              ansible_host: gitlab.embawood.dm
+            lb01:
+              ansible_host: lb01.embawood.dm
+            lb01-ho:
+              ansible_host: lb01-ho.embawood.dm
+            lb02:
+              ansible_host: lb02.embawood.dm
+            lb02-ho:
+              ansible_host: lb02-ho.embawood.dm
+            madeyra:
+              ansible_host: madeyra.embawood.dm
+            passbolt:
+              ansible_host: passbolt.embawood.dm
+            pmg02:
+              ansible_host: pmg02.embawood.dm
+            rp01-ho:
+              ansible_host: rp01-ho.embawood.dm
+            rp02-ho:
+              ansible_host: rp02-ho.embawood.dm
+            soar:
+              ansible_host: soar.embawood.dm
+            thehive:
+              ansible_host: thehive.embawood.dm
+            unifi:
+              ansible_host: unifi.embawood.dm
+            wazuh-archive:
+              ansible_host: wazuh-archive.embawood.dm
+            wazuh-cold:
+              ansible_host: wazuh-cold.embawood.dm
+            wazuh-dashboard:
+              ansible_host: wazuh-dashboard.embawood.dm
+            wazuh-hot1:
+              ansible_host: wazuh-hot1.embawood.dm
+            wazuh-hot2:
+              ansible_host: wazuh-hot2.embawood.dm
+            wazuh-server:
+              ansible_host: wazuh-server.embawood.dm
+            wazuh-worker1:
+              ansible_host: wazuh-worker1.embawood.dm
+            wazuh-worker2:
+              ansible_host: wazuh-worker2.embawood.dm
+        TSO:
+          hosts:
+            wazuh-worker3:
+              ansible_host: wazuh-worker3.embawood.dm
+            wazuh-worker4:
+              ansible_host: wazuh-worker4.embawood.dm
+            kerioconnect-tso:
+              ansible_host: kerioconnect-tso.embawood.dm
+            pmg01-tso:
+              ansible_host: pmg01-tso.embawood.dm
+            zabbix-tso:
+              ansible_host: zabbix-tso.embawood.dm
